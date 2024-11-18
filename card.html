@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card - UI Phase 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/toolbar/prism-toolbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/line-numbers/prism-line-numbers.min.css">
+</head>
+<body>
+    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center p-4">
+        <div class="glass-container bg-opacity-25 p-0 rounded-4 shadow-lg mx-auto my-4 text-white d-flex">
+            <!-- Include the same sidebar as index.html -->
+            <button class="navbar-toggler d-lg-none position-absolute top-0 end-0 m-3" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarContent" aria-controls="sidebarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="sidebarContent" class="collapse d-lg-block">
+                <div class="sidebar bg-transparent text-white p-3">
+                    <!-- Logo and Name Section -->
+                    <div class="sidebar-header mb-4 text-center d-flex align-items-center ps-3">
+                        <a href="index.html" class="text-decoration-none d-flex align-items-center">
+                            <img src="assets/logo.png" alt="Logo" class="sidebar-logo my-auto" height="25" style="width: auto;">
+                            <h5 class="fw-light mb-0 ms-3 text-white">Ashish Dixit</h5>
+                        </a>
+                    </div>
+
+                    <!-- Accordion Menu -->
+                    <div class="accordion accordion-dark" id="sidebarAccordion">
+                        <!-- Foundations Menu -->
+                        <div class="accordion-item bg-transparent border-light">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent text-white collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#foundationsCollapse">
+                                    Foundations
+                                </button>
+                            </h2>
+                            <div id="foundationsCollapse" class="accordion-collapse collapse" data-bs-parent="#sidebarAccordion">
+                                <div class="accordion-body">
+                                    <ul class="list-unstyled">
+                                        <li class="ps-3"><a href="typography.html" class="nav-link">Typography</a></li>
+                                        <li class="ps-3"><a href="color.html" class="nav-link">Color</a></li>
+                                        <li class="ps-3"><a href="logo.html" class="nav-link">Logo</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Components Menu -->
+                        <div class="accordion-item bg-transparent border-light">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent text-white collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#componentsCollapse">
+                                    Components
+                                </button>
+                            </h2>
+                            <div id="componentsCollapse" class="accordion-collapse collapse" data-bs-parent="#sidebarAccordion">
+                                <div class="accordion-body">
+                                    <ul class="list-unstyled">
+                                        <li class="ps-3"><a href="navbar.html" class="nav-link">Navbar</a></li>
+                                        <li class="ps-3"><a href="footer.html" class="nav-link">Footer</a></li>
+                                        <li class="ps-3"><a href="card.html" class="nav-link">Card</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page Patterns Menu -->
+                        <div class="accordion-item bg-transparent border-light">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent text-white collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#patternsCollapse">
+                                    Page Patterns
+                                </button>
+                            </h2>
+                            <div id="patternsCollapse" class="accordion-collapse collapse" data-bs-parent="#sidebarAccordion">
+                                <div class="accordion-body">
+                                    <ul class="list-unstyled">
+                                        <li class="ps-3"><a href="homepage.html" class="nav-link">Homepage</a></li>
+                                        <li class="ps-3"><a href="casestudy.html" class="nav-link">Case study</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card specific content -->
+            <div class="main-content p-4 d-flex align-items-start justify-content-center flex-1">
+                <div class="glow-container p-4">
+                    <h2 class="mb-4">Card Components</h2>
+                    
+                    <!-- Glass Card -->
+                    <div class="component-section mb-5">
+                        <h4 class="mb-3">Glass Card</h4>
+                        <div class="glow-box p-4">
+                            <div class="glass-card">
+                                <div class="diagonal-pattern glass-card-img"></div>
+                                <div class="glass-card-content">
+                                    <h3 class="glass-card-title">Glass Card Title</h3>
+                                    <p class="glass-card-text">This is a beautiful glass card with a subtle blur effect and elegant glow on hover. The content maintains perfect readability while keeping the glass effect intact.</p>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="glass-card-button">Learn More</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <h5>Implementation:</h5>
+                                <pre class="language-html rounded"><code class="language-html">
+&lt;div class="glass-card"&gt;
+    &lt;div class="diagonal-pattern glass-card-img"&gt;&lt;/div&gt;
+    &lt;div class="glass-card-content"&gt;
+        &lt;h3 class="glass-card-title"&gt;Glass Card Title&lt;/h3&gt;
+        &lt;p class="glass-card-text"&gt;This is a beautiful glass card with a subtle blur effect and elegant glow on hover. The content maintains perfect readability while keeping the glass effect intact.&lt;/p&gt;
+        &lt;div class="d-flex justify-content-center"&gt;
+            &lt;div class="glass-card-button"&gt;Learn More&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include the container glow effect script and active link script -->
+    <script>
+        const container = document.querySelector('.glass-container');
+        
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calculate angle based on cursor position relative to center
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const angle = (Math.atan2(y - centerY, x - centerX) * 180 / Math.PI + 360) % 360;
+            
+            // Calculate distance to nearest border
+            const distanceToLeft = x;
+            const distanceToRight = rect.width - x;
+            const distanceToTop = y;
+            const distanceToBottom = rect.height - y;
+            
+            const distance = Math.min(
+                distanceToLeft,
+                distanceToRight,
+                distanceToTop,
+                distanceToBottom
+            );
+            
+            // Set the CSS variables
+            container.style.setProperty('--angle', `${angle}deg`);
+            container.style.setProperty('--distance', `${distance}`);
+        });
+
+        container.addEventListener('mouseleave', () => {
+            container.style.setProperty('--distance', '200');
+        });
+    </script>
+
+    <script>
+        // Get current page filename
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        // Find and activate the corresponding nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+                // Find and expand the parent accordion
+                const accordionCollapse = link.closest('.accordion-collapse');
+                if (accordionCollapse) {
+                    accordionCollapse.classList.add('show');
+                    const accordionButton = document.querySelector(`[data-bs-target="#${accordionCollapse.id}"]`);
+                    if (accordionButton) {
+                        accordionButton.classList.remove('collapsed');
+                    }
+                }
+            }
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+    <style>
+        pre[class*="language-"] {
+            margin: 0;
+            padding: 1.5rem;
+            background: #282a36;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+        }
+        
+        code[class*="language-"] {
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important;
+        }
+    </style>
+</body>
+</html> 

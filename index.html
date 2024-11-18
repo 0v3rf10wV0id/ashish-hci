@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Phase 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center p-4">
+        <div class="glass-container bg-opacity-25 p-0 rounded-4 shadow-lg mx-auto my-4 text-white d-flex">
+            <!-- Add hamburger button -->
+            <button class="navbar-toggler d-lg-none position-absolute top-0 end-0 m-3" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarContent" aria-controls="sidebarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Wrap sidebar content in collapsible div -->
+            <div id="sidebarContent" class="collapse d-lg-block">
+                <!-- Sidebar content -->
+                <div class="sidebar bg-transparent text-white p-3">
+                    <!-- Logo and Name Section -->
+                    <div class="sidebar-header mb-4 text-center d-flex align-items-center ps-3">
+                        <a href="index.html" class="text-decoration-none d-flex align-items-center">
+                            <img src="assets/logo.png" alt="Logo" class="sidebar-logo my-auto" height="25" style="width: auto;">
+                            <h5 class="fw-light mb-0 ms-3 text-white">Ashish Dixit</h5>
+                        </a>
+                    </div>
+
+                    <!-- Accordion Menu -->
+                    <div class="accordion accordion-dark" id="sidebarAccordion">
+                        <!-- Foundations Menu -->
+                        <div class="accordion-item bg-transparent border-light">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent text-white collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#foundationsCollapse">
+                                    Foundations
+                                </button>
+                            </h2>
+                            <div id="foundationsCollapse" class="accordion-collapse collapse" data-bs-parent="#sidebarAccordion">
+                                <div class="accordion-body">
+                                    <ul class="list-unstyled">
+                                        <li class="ps-3"><a href="typography.html" class="nav-link">Typography</a></li>
+                                        <li class="ps-3"><a href="color.html" class="nav-link">Color</a></li>
+                                        <li class="ps-3"><a href="logo.html" class="nav-link">Logo</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Components Menu -->
+                        <div class="accordion-item bg-transparent border-light">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent text-white collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#componentsCollapse">
+                                    Components
+                                </button>
+                            </h2>
+                            <div id="componentsCollapse" class="accordion-collapse collapse" data-bs-parent="#sidebarAccordion">
+                                <div class="accordion-body">
+                                    <ul class="list-unstyled">
+                                        <li class="ps-3"><a href="navbar.html" class="nav-link">Navbar</a></li>
+                                        <li class="ps-3"><a href="footer.html" class="nav-link">Footer</a></li>
+                                        <li class="ps-3"><a href="card.html" class="nav-link">Card</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page Patterns Menu -->
+                        <div class="accordion-item bg-transparent border-light">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bg-transparent text-white collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#patternsCollapse">
+                                    Page Patterns
+                                </button>
+                            </h2>
+                            <div id="patternsCollapse" class="accordion-collapse collapse" data-bs-parent="#sidebarAccordion">
+                                <div class="accordion-body">
+                                    <ul class="list-unstyled">
+                                        <li class="ps-3"><a href="homepage.html" class="nav-link">Homepage</a></li>
+                                        <li class="ps-3"><a href="casestudy.html" class="nav-link">Case study</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main content -->
+            <div id="mainContent" class="main-content p-4 flex-grow-1 d-flex align-items-center justify-content-center">
+                <div class="glow-container d-flex align-items-center gap-4">
+                    <div class="hero-image text-center">
+                        <img src="assets/logo-hero.png" alt="Hero" class="img-fluid">
+                    </div>
+                    
+                    <div class="vertical-divider"></div>
+                    
+                    <div class="d-flex flex-column gap-3">
+                        <div class="glow-box p-4 rounded-3 d-inline-block">
+                            <h5 class="mb-0">UI Kit</h5>
+                        </div>
+                        <div class="glow-box p-4 rounded-3 d-inline-block">
+                            <h3 class="mb-0">Design System</h3>
+                            <p class="mb-0 mt-2">Ashish Dixit | HCI 472</p>
+                        </div>
+                        <div class="glow-box p-4 rounded-3 d-inline-block">
+                            <h5 class="mb-0">Designs</h5>
+                            <h5 class="mb-0">Grids + Dimensions</h5>
+                            <h5 class="mb-0">Components</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Add before closing body tag -->
+    <script>
+        const container = document.querySelector('.glass-container');
+        
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calculate angle based on cursor position relative to center
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const angle = (Math.atan2(y - centerY, x - centerX) * 180 / Math.PI + 360) % 360;
+            
+            // Calculate distance to nearest border
+            const distanceToLeft = x;
+            const distanceToRight = rect.width - x;
+            const distanceToTop = y;
+            const distanceToBottom = rect.height - y;
+            
+            const distance = Math.min(
+                distanceToLeft,
+                distanceToRight,
+                distanceToTop,
+                distanceToBottom
+            );
+            
+            // Set the CSS variables
+            container.style.setProperty('--angle', `${angle}deg`);
+            container.style.setProperty('--distance', `${distance}`);
+        });
+
+        container.addEventListener('mouseleave', () => {
+            container.style.setProperty('--distance', '200');
+        });
+    </script>
+
+    <!-- Add this script right before the closing body tag, after the existing scripts -->
+    <script>
+        // Get current page filename
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        
+        // Find and activate the corresponding nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPage) {
+                link.classList.add('active');
+                // Find and expand the parent accordion if it exists
+                const accordionCollapse = link.closest('.accordion-collapse');
+                if (accordionCollapse) {
+                    accordionCollapse.classList.add('show');
+                    const accordionButton = document.querySelector(`[data-bs-target="#${accordionCollapse.id}"]`);
+                    accordionButton.classList.remove('collapsed');
+                }
+            }
+        });
+    </script>
+
+    <!-- Add this before the closing body tag -->
+    <script>
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebarContent');
+            const toggler = document.querySelector('.navbar-toggler');
+            
+            if (window.innerWidth < 992) { // Only on mobile
+                if (!sidebar.contains(event.target) && !toggler.contains(event.target) && sidebar.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(sidebar);
+                    bsCollapse.hide();
+                }
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#sidebarContent .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 992) {
+                    const sidebar = document.getElementById('sidebarContent');
+                    const bsCollapse = new bootstrap.Collapse(sidebar);
+                    bsCollapse.hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
