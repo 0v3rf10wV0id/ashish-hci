@@ -88,7 +88,7 @@
             </div>
             
             <!-- Homepage Pattern Content -->
-            <div class="main-content p-4 d-flex flex-column">
+            <div class="main-contentp-4 d-flex flex-column">
                 <h2 class="mb-4">Homepage</h2>
                 
                 <!-- Viewport Controls -->
@@ -98,11 +98,20 @@
                         <button type="button" class="glass-pill-button active" data-viewport="desktop">
                             Desktop
                         </button>
+                        <button type="button" class="glass-pill-button" data-viewport="desktop-grid">
+                            Desktop Grid
+                        </button>
                         <button type="button" class="glass-pill-button" data-viewport="tablet">
                             Tablet
                         </button>
+                        <button type="button" class="glass-pill-button" data-viewport="tablet-grid">
+                            Tablet Grid
+                        </button>
                         <button type="button" class="glass-pill-button" data-viewport="phone">
                             Phone
+                        </button>
+                        <button type="button" class="glass-pill-button" data-viewport="phone-grid">
+                            Phone Grid
                         </button>
                     </div>
                 </div>
@@ -115,12 +124,24 @@
                                  alt="Homepage Desktop Preview" 
                                  class="preview-image img-fluid w-100 h-100 object-fit-cover"
                                  style="min-height: 600px;">
+                            <img src="assets/home-desktop-grid.png" data-viewport="desktop-grid"
+                                 alt="Homepage Desktop Grid Preview" 
+                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
+                                 style="min-height: 600px;">
                             <img src="assets/home-tablet.png" data-viewport="tablet"
                                  alt="Homepage Tablet Preview" 
                                  class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
                                  style="min-height: 600px;">
+                            <img src="assets/home-tablet-grid.png" data-viewport="tablet-grid"
+                                 alt="Homepage Tablet Grid Preview" 
+                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
+                                 style="min-height: 600px;">
                             <img src="assets/home-phone.png" data-viewport="phone"
                                  alt="Homepage Phone Preview" 
+                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
+                                 style="min-height: 600px;">
+                            <img src="assets/home-phone-grid.png" data-viewport="phone-grid"
+                                 alt="Homepage Phone Grid Preview" 
                                  class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
                                  style="min-height: 600px;">
                         </div>
@@ -195,8 +216,11 @@
     <script>
         const viewportSizes = {
             'desktop': { width: 1920, height: 1080, image: 'home-desktop.png' },
+            'desktop-grid': { width: 1920, height: 1080, image: 'home-desktop-grid.png' },
             'tablet': { width: 768, height: 1024, image: 'home-tablet.png' },
-            'phone': { width: 375, height: 667, image: 'home-phone.png' }
+            'tablet-grid': { width: 768, height: 1024, image: 'home-tablet-grid.png' },
+            'phone': { width: 375, height: 667, image: 'home-phone.png' },
+            'phone-grid': { width: 375, height: 667, image: 'home-phone-grid.png' }
         };
 
         function updateViewport() {
