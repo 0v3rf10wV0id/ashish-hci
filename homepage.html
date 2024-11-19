@@ -88,7 +88,7 @@
             </div>
             
             <!-- Homepage Pattern Content -->
-            <div class="main-contentp-4 d-flex flex-column">
+            <div class="main-content p-4 d-flex flex-column flex-grow-1">
                 <h2 class="mb-4">Homepage</h2>
                 
                 <!-- Viewport Controls -->
@@ -116,10 +116,11 @@
                     </div>
                 </div>
 
-                <!-- Viewport Preview -->
-                <div class="viewport-preview glow-box">
-                    <div id="preview-container" class="preview-desktop">
-                        <div class="preview-content">
+                <!-- Modified Viewport Preview -->
+                <div class="viewport-preview glow-box d-flex justify-content-center">
+                    <div id="preview-container" class="preview-desktop d-flex justify-content-center align-items-center w-100">
+                        <div class="preview-content position-relative d-flex justify-content-center">
+                            <!-- Desktop views remain the same -->
                             <img src="assets/home-desktop.png" data-viewport="desktop" 
                                  alt="Homepage Desktop Preview" 
                                  class="preview-image img-fluid w-100 h-100 object-fit-cover"
@@ -128,22 +129,26 @@
                                  alt="Homepage Desktop Grid Preview" 
                                  class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
                                  style="min-height: 600px;">
+                            
+                            <!-- Modified tablet views -->
                             <img src="assets/home-tablet.png" data-viewport="tablet"
                                  alt="Homepage Tablet Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid d-none"
+                                 style="max-width: 768px; height: auto; margin: 0 auto;">
                             <img src="assets/home-tablet-grid.png" data-viewport="tablet-grid"
                                  alt="Homepage Tablet Grid Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid d-none"
+                                 style="max-width: 768px; height: auto; margin: 0 auto;">
+                            
+                            <!-- Modified phone views -->
                             <img src="assets/home-phone.png" data-viewport="phone"
                                  alt="Homepage Phone Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid d-none"
+                                 style="max-width: 375px; height: auto; margin: 0 auto;">
                             <img src="assets/home-phone-grid.png" data-viewport="phone-grid"
                                  alt="Homepage Phone Grid Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid d-none"
+                                 style="max-width: 375px; height: auto; margin: 0 auto;">
                         </div>
                     </div>
                 </div>
@@ -215,12 +220,12 @@
     <!-- Viewport switching functionality -->
     <script>
         const viewportSizes = {
-            'desktop': { width: 1920, height: 1080, image: 'home-desktop.png' },
-            'desktop-grid': { width: 1920, height: 1080, image: 'home-desktop-grid.png' },
-            'tablet': { width: 768, height: 1024, image: 'home-tablet.png' },
-            'tablet-grid': { width: 768, height: 1024, image: 'home-tablet-grid.png' },
-            'phone': { width: 375, height: 667, image: 'home-phone.png' },
-            'phone-grid': { width: 375, height: 667, image: 'home-phone-grid.png' }
+            'desktop': { width: '100%', height: 'auto' },
+            'desktop-grid': { width: '100%', height: 'auto' },
+            'tablet': { width: '768px', height: 'auto' },
+            'tablet-grid': { width: '768px', height: 'auto' },
+            'phone': { width: '375px', height: 'auto' },
+            'phone-grid': { width: '375px', height: 'auto' }
         };
 
         function updateViewport() {
@@ -229,17 +234,24 @@
             
             const viewport = activeButton.dataset.viewport;
             const previewContainer = document.getElementById('preview-container');
+            const previewContent = previewContainer.querySelector('.preview-content');
             
             // Update preview container class
-            previewContainer.className = `preview-${viewport}`;
+            previewContainer.className = `preview-${viewport} d-flex justify-content-center align-items-center`;
             
-            // Show the correct image
-            const dimensions = viewportSizes[viewport];
-            const previewImage = document.querySelector('.preview-image');
-            if (previewImage) {
-                previewImage.src = `assets/${dimensions.image}`;
-                previewImage.classList.remove('d-none');
-            }
+            // Apply viewport-specific styles
+            const size = viewportSizes[viewport];
+            previewContent.style.width = size.width;
+            previewContent.style.height = size.height;
+            
+            // Show the correct image and hide others
+            document.querySelectorAll('.preview-image').forEach(img => {
+                if (img.dataset.viewport === viewport) {
+                    img.classList.remove('d-none');
+                } else {
+                    img.classList.add('d-none');
+                }
+            });
         }
 
         // Add click handlers to viewport buttons

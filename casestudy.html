@@ -82,7 +82,7 @@
             </div>
             
             <!-- Case Study Pattern Content -->
-            <div class="main-contentp-4 d-flex flex-column">
+            <div class="main-content p-4 d-flex flex-column">
                 <h2 class="mb-4">Case Study Pattern</h2>
                 
                 <!-- Viewport Controls -->
@@ -110,34 +110,39 @@
                     </div>
                 </div>
 
-                <!-- Viewport Preview -->
-                <div class="viewport-preview glow-box">
-                    <div id="preview-container" class="preview-desktop">
-                        <div class="preview-content">
+                <!-- Updated Viewport Preview -->
+                <div class="viewport-preview glow-box d-flex justify-content-center">
+                    <div id="preview-container" class="preview-desktop d-flex justify-content-center align-items-center">
+                        <div class="preview-content position-relative d-flex justify-content-center">
+                            <!-- Desktop views -->
                             <img src="assets/case-desktop.png" data-viewport="desktop" 
                                  alt="Case Study Desktop Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid"
+                                 style="width: 100%; max-width: 1920px;">
                             <img src="assets/case-desktop-grid.png" data-viewport="desktop-grid"
                                  alt="Case Study Desktop Grid Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid d-none"
+                                 style="width: 100%; max-width: 1920px;">
+                            
+                            <!-- Tablet views -->
                             <img src="assets/case-tablet.png" data-viewport="tablet"
                                  alt="Case Study Tablet Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid d-none"
+                                 style="width: 100%; max-width: 768px;">
                             <img src="assets/case-tablet-grid.png" data-viewport="tablet-grid"
                                  alt="Case Study Tablet Grid Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid d-none"
+                                 style="width: 100%; max-width: 768px;">
+                            
+                            <!-- Phone views -->
                             <img src="assets/case-phone.png" data-viewport="phone"
                                  alt="Case Study Phone Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid d-none"
+                                 style="width: 100%; max-width: 375px;">
                             <img src="assets/case-phone-grid.png" data-viewport="phone-grid"
                                  alt="Case Study Phone Grid Preview" 
-                                 class="preview-image img-fluid w-100 h-100 object-fit-cover d-none"
-                                 style="min-height: 600px;">
+                                 class="preview-image img-fluid d-none"
+                                 style="width: 100%; max-width: 375px;">
                         </div>
                     </div>
                 </div>
@@ -209,12 +214,12 @@
     <!-- Update viewport sizes script -->
     <script>
         const viewportSizes = {
-            'desktop': { width: 1920, height: 1080, image: 'case-desktop.png' },
-            'desktop-grid': { width: 1920, height: 1080, image: 'case-desktop-grid.png' },
-            'tablet': { width: 768, height: 1024, image: 'case-tablet.png' },
-            'tablet-grid': { width: 768, height: 1024, image: 'case-tablet-grid.png' },
-            'phone': { width: 375, height: 667, image: 'case-phone.png' },
-            'phone-grid': { width: 375, height: 667, image: 'case-phone-grid.png' }
+            'desktop': { maxWidth: '100%' },
+            'desktop-grid': { maxWidth: '100%' },
+            'tablet': { maxWidth: '768px' },
+            'tablet-grid': { maxWidth: '768px' },
+            'phone': { maxWidth: '375px' },
+            'phone-grid': { maxWidth: '375px' }
         };
 
         function updateViewport() {
@@ -224,16 +229,17 @@
             const viewport = activeButton.dataset.viewport;
             const previewContainer = document.getElementById('preview-container');
             
-            // Update preview container class
-            previewContainer.className = `preview-${viewport}`;
+            // Update preview container class while maintaining centering
+            previewContainer.className = `preview-${viewport} d-flex justify-content-center align-items-center`;
             
-            // Show the correct image
-            const dimensions = viewportSizes[viewport];
-            const previewImage = document.querySelector('.preview-image');
-            if (previewImage) {
-                previewImage.src = `assets/${dimensions.image}`;
-                previewImage.classList.remove('d-none');
-            }
+            // Show the correct image and hide others
+            document.querySelectorAll('.preview-image').forEach(img => {
+                if (img.dataset.viewport === viewport) {
+                    img.classList.remove('d-none');
+                } else {
+                    img.classList.add('d-none');
+                }
+            });
         }
 
         // Add click handlers to viewport buttons
